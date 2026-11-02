@@ -1,0 +1,1 @@
+import{a as t}from"./index-CxhW3H4x.js";const o=a=>{const e=new FormData;return e.append("file",a),t({method:"post",url:"/file",data:e,headers:{"Content-Type":"multipart/form-data;charset=UTF-8"}})},i=a=>{let e;return Array.isArray(a)?e=a.join:e=a,t({method:"get",url:"/file",params:{ids:e}})};export{i as g,o as u};
