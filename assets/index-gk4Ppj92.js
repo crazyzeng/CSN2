@@ -1,0 +1,1 @@
+import{n}from"./index-BwE8-Ohe.js";import"./vendor-vue-B2tG43mP.js";import"./vendor-echarts-DZ5aqWwu.js";const t={name:"Redirect",props:{},data(){return{}},created(){},mounted(){},methods:{}};var o=function(){var e=this,r=e._self._c;return r("div")},a=[],s=n(t,o,a,!1,null,"000be877");const i=s.exports;export{i as default};
