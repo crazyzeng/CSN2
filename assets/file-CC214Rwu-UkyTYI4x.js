@@ -1,0 +1,1 @@
+import{G as r}from"./index-qo0BWc3m.js";const o=e=>{const t=new FormData;return t.append("file",e),r({method:"post",url:"/file",data:t,headers:{"Content-Type":"multipart/form-data;charset=UTF-8"}})},i=e=>{let t;return Array.isArray(e)?t=e.join:t=e,r({method:"get",url:"/file",params:{ids:t}})};export{i,o};

@@ -1,0 +1,1 @@
+import{h as r}from"./index-qo0BWc3m.js";const a={name:"Redirect",props:{},data(){return{}},created(){},mounted(){},methods:{}};var o=function(){var e=this,t=e._self._c;return t("div")},s=[],n=r(a,o,s,!1,null,"000be877");const c=n.exports;export{c as default};

@@ -1,0 +1,1 @@
+import{h as e}from"./index-qo0BWc3m.js";const a={name:"ErrorPage401",props:{},data(){return{}},created(){},mounted(){},methods:{}};var o=function(){var r=this,t=r._self._c;return t("div")},s=[],n=e(a,o,s,!1,null,"33807947");const u=n.exports;export{u as default};

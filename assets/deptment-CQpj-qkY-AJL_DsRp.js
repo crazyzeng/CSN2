@@ -1,0 +1,1 @@
+import{G as t}from"./index-qo0BWc3m.js";function o(){return t({method:"get",url:"/userController/getAllDept"})}function l(e){return t({method:"get",url:`/userController/getUserByDept/${e}`})}export{l,o};

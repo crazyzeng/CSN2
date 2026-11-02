@@ -1,0 +1,1 @@
+import{h as e}from"./index-qo0BWc3m.js";const n={data(){return{}},components:{},computed:{},mounted(){},methods:{}};var r=function(){var t=this,o=t._self._c;return o("div",[t._v("我是设备运行控制")])},s=[],a=e(n,r,s,!1,null,"88f0504c");const u=a.exports;export{u as default};
