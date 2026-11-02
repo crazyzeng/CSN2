@@ -30,6 +30,7 @@ export default defineConfig(({ mode }) => {
                 '@': fileURLToPath(new URL('./src', import.meta.url)),
                 // element-ui 主题源码与字体使用 `~` 前缀引用，这里显式映射到 node_modules
                 '~element-ui': fileURLToPath(new URL('./node_modules/element-ui', import.meta.url)),
+                'vue': 'vue/dist/vue.esm.js',
             },
         },
 
