@@ -128,7 +128,7 @@ export default {
         return tempArr;
       });
       if (tempPoints.length > 0) {
-        const url = `ws://${location.hostname + ":" + location.port}/websocket/cacheThemePointDataWebSocket/-1`;
+        const url = `wss://${location.hostname + ":" + location.port}/websocket/cacheThemePointDataWebSocket/-1`;
         // const url = 'ws://192.168.2.132:908/websocket/cacheThemePointDataWebSocket/-1'
         that.ws = new WebSocket(url);
         that.ws.onopen = function () {
