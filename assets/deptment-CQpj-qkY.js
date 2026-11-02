@@ -1,0 +1,1 @@
+import{a as e}from"./index-CAm_kAGN.js";function o(){return e({method:"get",url:"/userController/getAllDept"})}function l(t){return e({method:"get",url:`/userController/getUserByDept/${t}`})}export{o as a,l as g};

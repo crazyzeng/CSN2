@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html" charset='utf-8' />
+	
+    <meta name="description" content="本热舒适计算工具依ASHRAE Standard 55-2017设计，可以用于计算PMV, PPD, SET, 以及适应性热舒适Adaptive comfort">
+
+    <link rel="stylesheet" type="text/css" href="/comfort2019/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/comfort2019/css/layout.css"/>   
+    <link rel="stylesheet" type="text/css" href="/comfort2019/css/jquery-ui.css"/>
+	<link rel="stylesheet" type="text/css" href="/comfort2019/css/custom.css">
+
+    <script type="text/javascript" src="/comfort2019/js/lib/d3.js"></script>
+	<script type="text/javascript" src="/comfort2019/js/lib/chartjs.js"></script>
+    <script type="text/javascript" src="/comfort2019/js/lib/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="/comfort2019/js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/comfort2019/js/util.js"></script>
+    <script type="text/javascript" src="/comfort2019/js/comfortmodels.js"></script>
+    <script type="text/javascript" src="/comfort2019/js/psychrometrics.js"></script>
+	<script type="text/javascript" src="/comfort2019/js/erf.js"></script>
+    <script type="text/javascript" src="/comfort2019/js/lib/underscore-min.js"></script>
+	<script type="text/javascript" src="/comfort2019/js/lib/buttons.js"></script>
+
+  <title>PMV热舒适计算分析工具</title>
+	
+    <link rel="stylesheet" type="text/css" href="/comfort2019/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/comfort2019/css/ui.multiselect.css"/>
+    <link rel="stylesheet" type="text/css" href="/comfort2019/css/psychchart.css"/>
+
+  <script type="text/javascript" src="/comfort2019/js/global.js"></script>
+  <script type="text/javascript" src="/comfort2019/js/lib/ui.multiselect.js"></script>
+  <script type="text/javascript" src="/comfort2019/js/lib/ui.selectmenu.js"></script>
+  <script type="text/javascript" src="/comfort2019/js/lib/jquery.scrollTo-min.js"></script>
+  <script type="text/javascript" src="/comfort2019/js/psychchart.js"></script>
+  <script type="text/javascript" src="/comfort2019/js/adaptchart.js"></script>
+  <script type="text/javascript" src="/comfort2019/js/temphumchart.js"></script>
+  <script type="text/javascript" src="/comfort2019/js/heatLoss_tempetaure.js"></script>
+  <script type="text/javascript" src="/comfort2019/js/veltopchart.js"></script>
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="comfort2019/js/lib/html5shiv.js"></script>
+<![endif]-->
+
+<!-- For IE6-8 support of media query-->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="comfort2019/js/lib/respond.min.js"></script>
+<![endif]-->
+	
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?ba292deba7b13f3936ef8290375b1e0e";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+</head>
+<body>
+   
+<div class="container">
+	<div class="container">
+		<!-- <div style="color:blue;">
+			提醒：本程序使用ECMAScript 6编写，若程序显示异常，说明您的浏览器版本过低，请更换使用支持ES6的浏览器。
+			否则，请使用：<a href="2013/calcu.html"><button>旧版本PMV计算工具</button></a>
+		</div> -->
+		<nav class="row justify-content-center navbar">
+			<span class="h4 custom_title">PMV热舒适计算分析工具</span>
+		</nav>
+		<div class="row justify-content-center">
+			<div class="card col-md-12 col-lg-5 my-2 p-0 ">
+                <div class="card-header">
+                    参数输入
+                </div>
+				<div id="left_content" class="card-body">
+					<div class="row justify-content-between">
+						<div class="col-sm-4">
+							<div id="select_comfort_model" class='in'>
+								<div id='modelDiv'>选择计算模型：
+								</div>
+							</div>
+						</div>
+			
+						<div class="col-lg-6 col-md-5">
+							<select class="form-control form-control-sm input-medium" id='model-type'>
+								<option value="pmvElevatedAirspeed">PMV模型</option>
+								<option value="adaptiveComfort">适应性模型</option>
+							</select>
+						</div>
+					</div>
+
+					<div id="inputs" class='in'>
+						<div class="row justify-content-between">
+							<div class="col-md-4 col-lg-12">
+								<div id='ta-lab'>空气干球温度</div>
+							</div>
+							<div class="col-sm-3 col-lg-3">
+								<div class='inputfield' id='ta-input'>
+									<input class='inputbox' id='ta'/>
+									<span class='tempunit'>&deg;C</span>
+								</div>
+							</div>
+
+							<div class="col-lg-6 col-md-5 checkbox">
+								<label id='labelforlink'>
+									<input type="checkbox" id='link' style="width: 20px">使用操作温度
+								</label>
+							</div>
+						</div>
+						<div class="row justify-content-between">
+							<div class="col-md-4 col-lg-12">
+								<div id='tr-lab'>平均辐射温度</div>
+							</div>
+							<div class="col-sm-3 col-lg-3">
+								<div class='inputfield' id='tr-input'>
+									<input class='inputbox' id="tr"/>
+									<span class='tempunit'>&deg;C</span>
+								</div>
+							</div>
+							<div class="col-lg-auto col-md-5"></div>
+						</div>
+
+						<div id="pmv-inputs">
+							<div class="row justify-content-between">
+								<div class="col-md-4 col-lg-12">
+									<div>风速</div>
+								</div>
+								<div class="col-sm-3">
+									<div class='inputfield'>
+										<input class='inputbox' id="vel"/>
+										<span class='unit' id='vel-unit'> m/s</span>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-5" id='local-control-div'>
+									<select class="form-control form-control-sm" id='local-control'>
+										<option value='noairspeedcontrol'>风速不可调控</option>
+										<option value='withairspeedcontrol'>风速可调控</option>
+									</select>
+								</div>
+							</div>
+										
+							<div class="row justify-content-between">
+								<div class="col-md-4 col-lg-12">
+									<div>
+										空气湿度
+									</div>
+								</div>
+								<div class="col-sm-3 col-lg-3">
+									<div class='inputfield'>
+										<input class='inputbox' id="rh"/>
+										<span class='unit' id='rh-unit'> %</span>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-5" id='humidity-spec-cont'>
+									<select class="form-control form-control-sm" id='humidity-spec'>
+										<option value='rh'>相对湿度</option>
+										<option value='w'>含湿量</option>
+										<option value='dewpoint'>露点温度</option>
+										<option value='wetbulb'>湿球温度</option>
+										<option value='vappress'>水蒸气分压力</option>
+									</select>
+								</div>
+							</div>							    
+
+							<div id='actInput' class="row justify-content-between in">
+								<div class="col-md-4 col-lg-12">
+									<div>
+										新陈代谢率
+									</div>
+								</div>
+								<div class="col-sm-3 col-lg-3">
+									<div class='inputfield' id="met_input">
+										<input class='inputbox' id="met"/>
+										<span class='unit'> met</span>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-5" id='actSelectDiv'>
+									<select class="form-control form-control-sm" id='actSelect'></select>
+								</div>
+							</div>
+							<div id='cloInput' class="row justify-content-between in">
+								<div class="col-md-4 col-lg-12">
+									<div>
+										服装热阻
+									</div>
+								</div>
+								<div class="col-sm-3 col-lg-3">
+									<div class='inputfield'>
+										<input class='inputbox' id="clo"/>
+										<span class='unit'> clo</span>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-5" id='cloSelectDiv'>
+									<select class="form-control form-control-sm" id='cloSelect'></select>
+								</div>
+							</div>
+				
+							<div class="row justify-content-center mt-4 btn-group-toggle" data-toggle="buttons" style="margin-left:0px;margin-right:0px;">
+								<label for='customClo' class="btn btn-light border btn-sm" style="width:100%">
+									<input type='checkbox' id='customClo'/>服装热阻精算
+								</label>
+							</div>
+
+							
+							<div class="row justify-content-center mt-2" id='customCloToggle'  style="margin-left:15px;margin-right:15px;display:none"><br/>
+								<select id='cloMultiSelect' class='col-sm-12 multiselect' multiple='multiple'></select>
+								<button id='setClo' class="col-sm-12" style="margin: 5px 0 0 0">设 定</button>
+							</div>
+
+							
+							<div class="row justify-content-center mt-2 btn-group-toggle" data-toggle="buttons" style="margin-left:0;margin-right:0;">
+								<label for='dynamicClo' class="btn btn-light border btn-sm" style="width:100%">
+									<input type='checkbox' id='dynamicClo'/>服装热阻估算
+								</label>
+							</div>
+
+							<div class="row card text-center m-1" id='dynamicCloToggle'>
+								<div class="card-body p-1">
+									<span class="xx">室外温度(6 am)</span>
+									<input id='taOut6' maxlength=10 placeholder='0.0' class='inputbox'/>
+									<span class='tempunit'>&deg;C</span>
+									<button id='setDynamicClo'>设 定</button>
+								</div>
+							</div>
+							
+							<div class="row justify-content-center mt-2 btn-group-toggle" data-toggle="buttons" style="margin-left:0;margin-right:0;">
+								<label id="globeTmpLabel" class="btn btn-light border btn-sm" style="width:100%">
+									<input type="radio" name="options" id="globeTemp" autocomplete="off">平均辐射温度计算
+								</label>
+							</div>
+
+						</div><!--end div id="pmv-inputs"-->
+
+						<div id='adaptive-inputs'>
+
+							<div class="row justify-content-between">
+								<div class="col-md-4 col-lg-12">
+									<div>
+										室外平均温度
+									</div>
+								</div>
+								<div class="col-sm-3 col-lg-3">
+									<div class='inputfield'>
+										<input class='inputbox' id="trm"/>
+										<span class='tempunit'> &deg;C</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row justify-content-between">
+								<div class="col-md-4 col-lg-12">
+									<div>
+										风速
+									</div>
+								</div>
+								<div class="col-sm-6 col-lg-12" style="width: 300px;">
+									<select class="form-control form-control-sm" id='vel_a'>
+										<option value="0.3" selected="selected">0.3 m/s (59 fpm)</option>
+										<option value="0.6">0.6 m/s (118 fpm)</option>
+										<option value="0.9">0.9 m/s (177 fpm)</option>
+										<option value="1.2">1.2 m/s (236 fpm)</option>
+									</select>
+								</div>
+							</div>
+						</div><!--end div id="adaptive-inputs"-->
+
+					</div><!--end div id="inputs"-->
+
+						
+					<div class="row justify-content-between mt-2" style="margin-left:0;margin-right:0;">
+						<div class="btn-group btn-group-toggle " data-toggle="buttons">
+							<label class="btn btn-light border btn-sm">
+								<input type="radio" name="options" id="setDefaults" autocomplete="off"> 重 置
+							</label>
+							<label class="btn btn-light border btn-sm">
+								<input type="radio" name="options" id="specPressure" autocomplete="off"> 当地大气压力
+							</label>
+							<label class="btn btn-light border btn-sm">
+								<input type="radio" name="options" id="unitsToggle" autocomplete="off"> SI/IP转换
+							</label>
+							<!-- <label class="btn btn-light border btn-sm">
+                                <input type="radio" name="options" autocomplete="off">
+								<a title="帮助" href="help.html" target="_blank">Help</a>
+                            </label> -->
+						</div>
+					</div>
+
+				</div>
+			</div>
+       
+			<div id="right_content" class="col-md-12 col-lg-7 bg-white py-2">
+
+                <div class="row justify-content-center">
+                    <div class="alert alert-success py-1 text-center border-0 bg-white" role="alert" id='output-b'>
+                        <div id='comply-msg'></div>
+                        <div id='special-msg'></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="card align-content-center text-center m-1 col-sm-12 border-0" id='output-a'>
+                        <div class="card-body p-2">
+                            <form>
+                                <div id='pmv-outputs'>
+                                    <div class="form-row">
+                                        <div class="col-sm-6">
+                                            <span id='pmv-out-label'>PMV</span>
+                                            <span> = </span>
+                                            <span id='pmv-res'></span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span id='ppd-out-label'>PPD</span>
+                                            <span> = </span>
+                                            <span id='ppd-res'></span>
+                                            <span> %</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-sm-6">
+                                            <span id='pmv-out-label'>热感觉</span>
+                                            <span> = </span>
+                                            <span id='sensation'></span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span id='ppd-out-label'>SET</span>
+                                            <span> = </span>
+                                            <span id='SET'></span>
+                                            <span class='tempunit'> &deg;C</span>
+                                        </div>
+                                    </div>
+                                </div><!--id="pmv-outputs"-->
+
+                                <div id='pmv-elev-outputs'>
+
+                                    <div class="form-row">
+                                        <div class="col-sm-6">
+                                            <span>无风干球温度</span>
+                                            <span> = </span>
+                                            <span id='ta-still'></span>
+                                            <span class="tempunit"> °C</span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span>冷却效应</span>
+                                            <span> = </span>
+                                            <span id='cooling-effect'></span>
+                                            <span class="tempunit"> °C</span>
+                                        </div>
+                                    </div>
+                                </div><!--id="pmv-elev-outputs"-->
+
+                                <div id='adaptive-outputs' class="form-row" style='display:none'>
+                                    <div class="col-sm-12">
+                                        <span>80% 可接受范围</span>
+                                        <span> = </span>
+                                        <span id='limits80'></span>
+                                        <span> °C</span>
+                                        <small class="form-text text-muted mt-0" id='sensation80'></small>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <span>90% 可接受范围</span>
+                                        <span> = </span>
+                                        <span id='limits90'></span>
+                                        <span> °C</span>
+                                        <small class="form-text text-muted mt-0" id='sensation90'></small>
+                                    </div>
+                                </div><!--id="adaptive-outputs"-->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+     
+                <div class="row center p-1 col-sm-6 mt-4" id='chartSelect-cont'>
+                    <select class="form-control form-control-sm" id='chartSelect'>
+                        <option value='psychta'>图1: 含湿量vs干球温度</option>
+                        <option value='psychtop'>图2: 含湿量vs操作温度</option>
+                        <option value='temphum'>图3: 相对湿度vs干球温度</option>
+                        <option value='veltop'>图4: 风速vs操作温度</option>
+                        <option value='heatloss'>图5: 人体散热量vs干球温度</option>
+                    </select>
+                </div>
+           
+                <div class='row justify-content-center' id="chart-title-adaptive" style="display:none"><a class="mainlink">适应性模型</a>
+                </div>
+
+                <div id='globedialog' title='平均辐射温度计算器'></div>
+                <div id='localdialog' title='Local discomfort assessment'></div>
+                <div id='ERFdialog' title='SolarCal: shortwave radiation calculator'></div>
+
+                
+                <div class="row justify-content-center">
+                    <div style="margin-left:-15px;" id="chart-div"></div>
+                    <div style="margin-left:10px;" id="temphumchart-div"></div>
+                    <div style="margin-left:10px;" id="veltopchart-div"></div>
+                    <div style="margin-left:20px;" id="chart-div-adaptive"></div>
+                    <div id="chartWrapper" style="position: relative; height:500px; width:500px">
+                        <canvas id="chart_heatLoss_div"></canvas>
+                    </div>
+                </div>
+   
+                <div class="row justify-content-center">
+                    <div id="pmv-notes" class="card align-content-center m-1 col-sm-12 border-0 footer">
+                        <div class='card-body p-1 m-1' id="psychta-note">
+                            <b>注:</b> 本图为焓湿图（美）样式，纵坐标为含湿量，横坐标为干球温度（DBT）。阴影区域为PMV不超过±0.5的热舒适区间。<br>
+                             <b>适用范围：</b> ASHRAE Standard 55仅适用于健康的男性和女性，不适用于以下人群: a) whose clothing insulation exceed 1.5 clo; 
+							 b) whose clothing is highly impermeable; or c) who are sleeping, reclining in contact with bedding, or able to adjust blankets or bedding.
+                        </div>
+                        <div class='card-body p-1 m-1' id="psychtop-note">
+                            <b>注：</b> 本图为焓湿图（美）样式，纵坐标为含湿量，横坐标为操作温度（Operative temperature）。阴影区域为PMV不超过±0.5的热舒适区间。<br>
+                            <b>适用范围：</b> ASHRAE Standard 55仅适用于健康的男性和女性，不适用于以下人群: a) whose clothing insulation exceed 1.5 clo; b) whose clothing is highly
+                            impermeable; or c) who are sleeping, reclining in contact with bedding, or able to adjust blankets or bedding.
+                        </div>
+                        <div class='card-body p-1 m-1' id="temphum-note">
+                            <b>注：</b> 本图横、纵坐标分别为空气干球温度、相对湿度，图表形式简易，可以更直观地显示PMV计算结果。阴影区域为PMV不超过±0.5的热舒适区间。
+             
+                        </div>
+                        <div class='card-body p-1 m-1' id="veltop-note">
+							<b>注：</b> 本图横、纵坐标分别为风速、操作温度。阴影区域为PMV不超过±0.5的热舒适区间。<br>
+                            <b>适用范围：</b> The elevated air speed comfort zone method is to all
+                            spaces
+                            where
+                            the occupants have
+                            activity levels between 1.0 and 2.0 met and clothing insulation between 0.0 and 1.5 clo.
+                            There is no upper limit to air speed if occupant's
+                            total clothing > 0.7 clo and metabolic rate > 1.3 met.
+                        </div>
+
+                    </div><!--end of div "pmv-notes"-->
+                </div>
+
+                <div id="adaptive-note" class="card align-content-center m-1 col-sm-12 border-0 footer">
+
+                    <div class='card-boby p-1 m-1'>
+                        <b>NOTE:</b> Method is applicable only for occupant-controlled naturally conditioned spaces
+                        that
+                        meet
+                        all of the following criteria: (a) There is no mechanical
+                        cooling system installed. No heating system is in operation; (b) Metabolic rates ranging
+                        from
+                        1.0 to 1.3
+                        met; and (c) Occupants are free to adapt their clothing to
+                        the indoor and/or outdoor thermal conditions within a range at least as wide as 0.5-1.0 clo.
+                    </div>
+                </div>
+
+            </div><!--id="right_content"-->
+
+        </div>
+    </div>
+  <br class="clear">
+  <br />
+    
+  <script language="javascript" src="/comfort2019/js/page.js" type="text/javascript"></script>
+  <script>
+    $(document).ready(function(){
+      $("#ashrae-link").addClass("highlight")
+    });
+  </script>
+  
+		<div class="row footer justify-content-between m-1">
+			<p>参考资料：<br/>
+                [1] Tyler Hoyt, Stefano Schiavon, Federico Tartarini, Toby Cheung, Kyle Steinfeld, Alberto Piccioli, and Dustin Moon, 2019,
+                <a href="http://comfort.cbe.berkeley.edu/" target="_blank">CBE Thermal Comfort Tool</a>. Center for the Built Environment, University of California Berkeley.（美国加州大学伯克利分校建筑环境中心CBE热舒适计算工具）
+			</p>
+		</div>
+  
+  </div>
+
+</body>
