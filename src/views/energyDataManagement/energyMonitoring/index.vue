@@ -230,9 +230,9 @@ export default {
             this.connectStationWS(val)
 
             const modelMap = {
-                武广: '/models/WG.glb',
-                沪昆: '/models/HK.glb',
-                锅炉房: '/models/GLF.glb',
+                武广: '/CSN2/models/WG.glb',
+                沪昆: '/CSN2/models/HK.glb',
+                锅炉房: '/CSN2/models/GLF.glb',
             };
 
             if (val == '锅炉房') {
@@ -286,7 +286,7 @@ export default {
             this.loadingProgress = 0;
 
             // 手动加载
-            const model = await this.three.loadModel('/models/WG.glb', {}, (p) => {
+            const model = await this.three.loadModel('/CSN2/models/WG.glb', {}, (p) => {
                 this.loadingProgress = p;
             });
 

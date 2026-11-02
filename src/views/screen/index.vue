@@ -183,8 +183,8 @@
                             <!-- 右侧动态指标 -->
                             <div class="flex flex-1 items-center justify-center">
                                 <div class="flex items-center justify-around w-full">
-                                    <template v-for="(sub, i) in item.values">
-                                        <div class="flex flex-col items-center" :key="'item-' + i">
+                                    <template v-for="(sub, i) in item.values" :key="'item-' + i">
+                                        <div class="flex flex-col items-center">
                                             <div class="text-sm font-semibold whitespace-nowrap">
                                                 {{ sub.value }}
                                                 <span class="text-xs font-normal">{{ sub.unit }}</span>
@@ -215,8 +215,8 @@
                             <!-- 右侧动态指标 -->
                             <div class="flex flex-1 items-center justify-center">
                                 <div class="flex items-center justify-around w-full">
-                                    <template v-for="(sub, i) in item.values">
-                                        <div class="flex flex-col items-center" :key="'item-' + i">
+                                    <template v-for="(sub, i) in item.values" :key="'item-' + i">
+                                        <div class="flex flex-col items-center">
                                             <div class="text-sm font-semibold whitespace-nowrap">
                                                 {{ sub.value }}
                                                 <span class="text-xs font-normal">{{ sub.unit }}</span>
@@ -704,10 +704,10 @@ export default {
                     label: '能源站',
                     value: '4',
                     children: [
-                        { label: '武广', value: '4-1', modelUrl: '/models/WG.glb' },
-                        { label: '沪昆', value: '4-2', modelUrl: '/models/HK.glb' },
-                        { label: '锅炉房', value: '4-3', modelUrl: '/models/GLF.glb' },
-                        { label: '风冷热泵', value: '4-4', modelUrl: '/models/GLF.glb' },
+                        { label: '武广', value: '4-1', modelUrl: '/CSN2/models/WG.glb' },
+                        { label: '沪昆', value: '4-2', modelUrl: '/CSN2/models/HK.glb' },
+                        { label: '锅炉房', value: '4-3', modelUrl: '/CSN2/models/GLF.glb' },
+                        { label: '风冷热泵', value: '4-4', modelUrl: '/CSN2/models/GLF.glb' },
                     ],
                 },
             ],
