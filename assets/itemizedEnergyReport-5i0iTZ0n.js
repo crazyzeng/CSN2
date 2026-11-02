@@ -1,0 +1,1 @@
+import{a as t}from"./index-EM5XbUTK.js";function n(e){return t({method:"post",url:"/energyData/subItemEnergy",data:e})}function o(e){return t({method:"get",url:`/energyData/subItem?energyType=${e}`})}function s(e){return t({method:"post",url:"/energyData/subItemEnergy/export",data:e,responseType:"blob"})}export{n as a,s as e,o as g};
