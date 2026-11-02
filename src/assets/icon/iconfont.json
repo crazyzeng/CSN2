@@ -1,0 +1,156 @@
+{
+  "id": "2958850",
+  "name": "长沙南能源",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "686274",
+      "name": "露水_线",
+      "font_class": "lushuixian",
+      "unicode": "e7ac",
+      "unicode_decimal": 59308
+    },
+    {
+      "icon_id": "1286944",
+      "name": "SEN018",
+      "font_class": "sen018",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "17285042",
+      "name": "首页-可燃气体检测报警系统1",
+      "font_class": "shouye-keranqitijiancebaojingxitong1",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "18340223",
+      "name": "购买-闪电",
+      "font_class": "goumai-shandian",
+      "unicode": "e6f7",
+      "unicode_decimal": 59127
+    },
+    {
+      "icon_id": "524416",
+      "name": "重置密码",
+      "font_class": "zhongzhimima",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "841002",
+      "name": "编辑",
+      "font_class": "icon6",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "1281472",
+      "name": "区域访问趋势",
+      "font_class": "quyufangwenqushi",
+      "unicode": "e817",
+      "unicode_decimal": 59415
+    },
+    {
+      "icon_id": "1459147",
+      "name": "导出",
+      "font_class": "daochu",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "4143527",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "4354243",
+      "name": "图表-饼图",
+      "font_class": "tubiao-bingtu",
+      "unicode": "eb95",
+      "unicode_decimal": 60309
+    },
+    {
+      "icon_id": "8059388",
+      "name": "web端模版操作_停用",
+      "font_class": "webduanmobancaozuo_tingyong",
+      "unicode": "edf8",
+      "unicode_decimal": 60920
+    },
+    {
+      "icon_id": "8824969",
+      "name": "查看用户",
+      "font_class": "chakanyonghu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "10441376",
+      "name": "解除劫警_line",
+      "font_class": "rob-alarm-remove_line",
+      "unicode": "e721",
+      "unicode_decimal": 59169
+    },
+    {
+      "icon_id": "12515461",
+      "name": "权限",
+      "font_class": "quanxian",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "12844012",
+      "name": "01数据分析",
+      "font_class": "shujufenxi",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    },
+    {
+      "icon_id": "12975220",
+      "name": "控制",
+      "font_class": "kongzhi",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "13638689",
+      "name": "新增",
+      "font_class": "xinzeng",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "13763333",
+      "name": "计价规则",
+      "font_class": "jijiaguize",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "17544263",
+      "name": "xy2_笔记",
+      "font_class": "xy2_biji",
+      "unicode": "e73f",
+      "unicode_decimal": 59199
+    },
+    {
+      "icon_id": "19358272",
+      "name": "数据库权限申请",
+      "font_class": "shujukuquanxianshenqing",
+      "unicode": "e71b",
+      "unicode_decimal": 59163
+    },
+    {
+      "icon_id": "21594611",
+      "name": "账户管理_1",
+      "font_class": "zhanghuguanli_1",
+      "unicode": "e6f0",
+      "unicode_decimal": 59120
+    }
+  ]
+}

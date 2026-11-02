@@ -1,0 +1,4 @@
+/* Tailwind v3 入口：三条 @tailwind 指令会被 postcss 的 tailwindcss 插件展开 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

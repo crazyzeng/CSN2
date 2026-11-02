@@ -1,0 +1,152 @@
+<template>
+  <section id="center_bar_chart"></section>
+</template>
+<script lang="js">
+import * as echarts from 'echarts'
+
+export default {
+  props: {
+    barData: {
+      type: Object,
+      default() {
+        return {};
+      },
+    }
+  },
+  data: function () {
+    return {
+      options: {
+         graphic: [
+          {
+            type: "text",
+            left: '3%',
+            style: {
+              text: "(件)",
+              fill: "#666",
+              fontSize: 12,
+            }
+          }
+        ],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        legend: {
+          data: ['本期', '同比'],
+          textStyle: {
+            color: '#000'
+          }
+        },
+        grid: {
+          left: '6%',
+          right: '8%',
+          bottom: '15%',
+          top: '10%',
+          containLabel: false
+        },
+        xAxis: [
+          {
+            name: '（月）',
+            type: 'category',
+            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#999'
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              color: '#999'
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            splitLine: {
+              show: false,
+              lineStyle: {
+                color: '#2d3e54',
+                type: 'dashed'
+              }
+            },
+            axisLabel: {
+              color: '#999'
+            },
+            axisTick: {
+              show: false
+            },
+            axisLine: {
+              show: false
+            }
+          }
+        ],
+        series: [
+          {
+            name: '本期',
+            type: 'bar',
+            barGap: '30%',
+            barWidth: '10px',
+            itemStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: '#FA433D' },
+                { offset: 1, color: '#FCA426' }
+              ]),
+              barBorderRadius: [7, 7, 7, 7],
+            },
+            data: []
+          },
+          {
+            name: '同比',
+            type: 'bar',
+            barGap: '30%',
+            barWidth: '10px',
+            itemStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: '#4C88FF' },
+                { offset: 1, color: '#4EE6FB' }
+              ]),
+              barBorderRadius: [7, 7, 7, 7],
+            },
+            data: []
+          },
+        ]
+      }
+    }
+  },
+  watch: {
+    barData: function (data) {
+      this.init()
+    },
+  },
+  mounted() {
+    this.init()
+  },
+  methods: {
+    init() {
+      let that = this
+      let myChart = this.$echarts.init(document.getElementById('center_bar_chart'));
+      myChart.off('click');
+      myChart.getZr().on('click', function (e) {
+        let xIndex = myChart.convertFromPixel({ seriesIndex: 0 }, [e.offsetX, e.offsetY])[0];
+        that.$emit('monthChange', xIndex)
+      })
+      this.options.series[0].data = this.barData.cur;
+      this.options.series[1].data = this.barData.last;
+      myChart.setOption(this.options);
+      window.onresize = myChart.resize;
+    },
+  }
+}
+</script>
+<style lang="scss" scoped>
+#center_bar_chart {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+</style>

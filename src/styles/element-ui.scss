@@ -1,0 +1,28 @@
+@import './mixin.scss';
+
+.el-container{
+    >.el-container {
+        height: calc(100% - 90px);
+    }
+}
+.th-container-view{
+    >.el-container {
+        height: 100%;
+    }
+}
+
+.el-table--scrollable-y .el-table__body-wrapper {
+
+    @include scrollBar;
+    // &::-webkit-scrollbar {
+    //     width: 10px;
+    //     height: 10px;
+    // }
+}
+
+// .blue-theme .el-notification,
+// .blue-theme .el-dialog,
+// .blue-theme .el-select-dropdown,
+// .blue-theme .el-picker-panel {
+//     background-color: rgba(25,70,133, 1)
+// }

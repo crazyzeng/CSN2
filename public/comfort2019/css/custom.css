@@ -1,0 +1,61 @@
+body,.card,.bg-white{
+    background-color: transparent!important;
+    color: #fff;
+}
+.custom_title{
+    color:#fff;
+}
+.card,input{
+    border-color: #686565;
+}
+input,span,text{
+    color: #fff!important;
+}
+#chart_heatLoss_div{
+    background-color: transparent;
+}
+iframe{
+    border: none!important;
+}
+.inputbox{
+    outline: none;
+}
+.ui-button-text,.text-muted{
+    color:#000!important;
+}
+#globedialog input{
+    color:#000!important;
+}
+label.btn.btn-light.border.btn-sm{
+    cursor: pointer;
+    color: #fff!important;
+    background-color: transparent;
+    border-color: #a59b9b!important;
+}
+label.btn.btn-light.btn-sm:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: transparent!important;
+}
+.form-control.form-control-sm{
+    background-color: transparent;
+    border-color: #686565!important;
+    color: #fff;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    background: transparent!important;
+}
+option {
+    color: #000;
+}
+span.ui-spinner.ui-state-default.ui-widget.ui-widget-content.ui-corner-all,.ui-spinner a.ui-spinner-button{
+    border-color: #a59b9b;
+}
+.ui-multiselect ul.available,.ui-multiselect ul.selected,.ui-widget-header{
+    background-color: transparent!important;
+}
+.ui-multiselect ul.available li,.ui-multiselect ul.selected li,.ui-button-text{
+    color: #fff!important;
+}
+.ui-dialog-title,.ui-button>.ui-button-text{
+    color: #000 !important;
+}

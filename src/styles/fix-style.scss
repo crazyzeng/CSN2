@@ -1,0 +1,239 @@
+.curDivider {
+    left: 13px;
+    top: 3px;
+}
+// 常规按钮样式调整
+// .el-button--primary {
+//     background-color: #2a3e62;
+// }
+// .el-button--primary:hover,
+// .el-button--primary:focus {
+//     background-color: #2a3e62;
+//     border-color: #2a3e62;
+// }
+// 线框按钮样式
+.border-btn {
+    background-color: transparent !important;
+}
+
+.b-b-b {
+    border-radius: 15px !important;
+    border: 1px solid #486aa8 !important;
+    border-color: #486aa8 !important;
+
+    &:hover,
+    &:focus {
+        background-color: transparent !important;
+        border: 1px solid #55c5ff !important;
+    }
+
+    .el-icon svg {
+        path {
+            color: #55c5ff;
+        }
+    }
+}
+
+.b-b-g {
+    border-radius: 15px;
+    border: 1px solid #1ec695;
+    border-color: #1ec695 !important;
+    &:hover,
+    &:focus {
+        background-color: transparent !important;
+        border: 1px solid #1ec695 !important;
+    }
+
+    .el-icon svg {
+        path {
+            color: #1ec695;
+        }
+    }
+}
+
+.b-b-r {
+    border-radius: 15px;
+    border: 1px solid #ff6e76;
+    border-color: #ff6e76 !important;
+    &:hover,
+    &:focus {
+        background-color: transparent !important;
+        border: 1px solid #ff6e76 !important;
+    }
+
+    .el-icon svg {
+        path {
+            color: #ff6e76;
+        }
+    }
+}
+// MessageBox 样式
+.el-message-box__btns {
+    text-align: center;
+}
+.el-message-box__content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+// 确认/提交
+.confirm-btn {
+    // 60*30  #2e6cd8 R4
+    // width: 60px;
+    height: 30px;
+    // background-color: #2e6cd8 !important;
+    border-radius: 4px !important;
+}
+.cancel-btn {
+    // width: 60px;
+    height: 30px;
+    background-color: transparent !important;
+    border-radius: 4px !important;
+    // border-color: #2e6cd8 !important;
+    span {
+        // color: #2e6cd8 !important;
+    }
+}
+// 左侧菜单
+.el-aside {
+    // padding-bottom: 20px;
+    // padding-top: 20px;
+}
+
+// 全局单选样式
+.el-radio__inner {
+    background: transparent !important;
+    border-color: #6390e6 !important;
+}
+
+.el-radio__inner::after {
+    background-color: #6390e6 !important;
+}
+
+.th-main-title > h2 {
+    font-size: 22px !important;
+}
+
+// 保留原 element-variables.scss 中 $--button-font-weight: 400 的定制效果
+.el-button {
+    font-weight: 400;
+}
+
+.th-main-title h2 {
+    line-height: normal !important;
+    margin-left: 20px !important;
+}
+
+// input样式
+.el-date-editor.el-input,
+.el-date-editor.el-input__inner {
+    // width: 200px;
+}
+
+// 分页input样式
+// .el-pagination {
+//     position: relative;
+//     right: 0;
+//     .el-pagination__sizes {
+//         .el-input > .el-input__inner {
+//             width: 100px !important;
+//         }
+//     }
+//     .el-pagination__jump {
+//         .el-input > .el-input__inner {
+//             width: 40px !important;
+//         }
+//     }
+//     .el-input__inner{
+//         border-radius: 5px;
+//     }
+// }
+
+// table border 处理
+.el-table--enable-row-transition .el-table__body td.el-table__cell {
+    border-bottom: none;
+}
+.el-table--enable-row-transition .el-table__body td.el-table__cell:last-child {
+    border-right: none;
+}
+
+// button 样式
+.el-button.el-button--default {
+    // color: #fff !important;
+}
+
+//定义全局link样式
+.el-link__inner {
+    padding: 0 !important;
+}
+.el-link.is-underline:hover:after {
+    display: none;
+}
+.red-link {
+    span {
+        color: #ff6e76 !important;
+    }
+}
+
+.blue-link {
+    span {
+        color: #55c5ff !important;
+    }
+}
+
+.yellow-link {
+    span {
+        color: #f4ae50 !important;
+    }
+}
+
+.green-link {
+    span {
+        color: #1ec695 !important;
+    }
+}
+
+// tabs 样式
+.el-tabs > .el-tabs__header .el-tabs__item {
+    font-size: 16px;
+}
+::v-deep.el-tabs {
+    background: none !important;
+    border: none;
+  
+    // .el-tabs__nav-wrap::after {
+    //   background-color: #2a3e62;
+    // }
+  
+    // .el-tabs__content {
+      // padding-top: 15px !important;
+    // }
+  
+    > .el-tabs__header {
+      border-color: #2a3e62;
+      background: none !important;
+  
+      .el-tabs__item.is-active {
+        background-color: transparent;
+        border: none;
+        color: #409eff !important;
+      }
+  
+      .el-tabs__item {
+        border: none;
+        color: #fff;
+      }
+    }
+  }
+  .el-tabs__nav-wrap::after{
+    background-color: #e5e9fb!important;
+  }
+// 单选样式
+.el-radio {
+    // color: #fff !important;
+}
+
+// 时间选择，区间
+// .el-date-editor .el-range__icon{
+//     display: none;
+// }

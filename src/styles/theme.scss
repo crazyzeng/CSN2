@@ -1,0 +1,224 @@
+@import './variables.scss';
+
+// .blue-theme
+// .white-theme { overflow: hidden;}
+
+.blue-theme {
+
+    color: map-get($defaultText, 'blue');
+
+    .theme-bg {
+
+        width: 100%;
+        height: 100%;
+        background-image: url(../assets/theme/theme-blue-bg.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+
+    .theme-header {
+        background-color: rgba(#0e42a8, .5)
+    }
+
+    .theme-sidebar-box {
+
+        border: 1px solid $light-blue;
+
+        >.theme-sidebar {
+
+            color: map-get($defaultText, 'blue') !important;
+        }
+    }
+
+    .theme-main {
+
+        position: absolute;
+        top: 16px;
+        left: 0;
+        width: calc(100% - 16px);
+        height: calc(100% - 32px);
+        padding: 16px;
+        box-sizing: border-box;
+        border-bottom: 30px solid transparent;
+        border-image: url(../assets/theme/theme-blue-main-border.png) 2 56 30 56;
+        border-image-width: 2px 56px 30px 56px;
+        border-image-outset: 0 16px 0 28px;
+
+        .theme-main-title {
+            background-color: rgba(#0e42a8, .5);
+        }
+
+        .th-container-view {
+            background-image: linear-gradient(to bottom, rgba(#00204c, .3), rgba(#00204c, .05));
+        }
+    }
+
+    // 透明背景
+    .el-table,
+    .el-table tr,
+    .el-input__inner {
+        // background-color: transparent;
+    }
+
+    .el-table {
+        .el-loading-mask {
+            background-color: #f1f0f0; // loading遮罩层背景
+        }
+    }
+
+    .el-form-item {  // 标签label颜色
+        >.el-form-item__label {
+            color: #000;
+        }
+    }
+
+    .el-input.is-disabled .el-input__inner {
+        // background-color: transparent;
+        // border-color: grey;
+        // background-color: #f5f7fa;
+        // color: #606266;
+    }
+
+    .el-textarea.is-disabled .el-textarea__inner {
+        background-color: transparent;
+        border-color: grey;
+    }
+
+    .el-radio__input.is-disabled .el-radio__inner {
+        background-color: transparent;
+    }
+
+    .el-radio__inner::after {
+        background-color: #fff;
+    }
+
+    .el-checkbox__inner::after {
+        border: 1px solid #fff;
+        border-top: 0;
+        border-left: 0;
+    }
+
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
+        background-color: #fff;
+    }
+
+    // .el-tag.el-tag--info {
+    //     background-color: rgba(25, 70, 133, 0.8);
+    //     color: #fff;
+    //     border: solid 1px #fff;
+    // }
+
+    // .el-tag.el-tag--info .el-tag__close {
+    //     color: #fff;
+    // }
+
+    // .el-tag.el-tag--info .el-tag__close:hover {
+    //     background-color: #909399
+    // }
+
+    .el-select .el-tag__close.el-icon-close {
+        background: transparent;
+    }
+
+    .time-select-item:hover {
+        background-color: $light-blue;
+    }
+
+    .time-select-item.disabled {
+        color: #999;
+    }
+
+    .el-tree {
+        height: 100%;
+    }
+}
+
+.el-tabs__content {
+    padding: 0 !important;
+}
+
+.white-theme,
+.grey-theme {
+
+    // color: map-get($defaultText, 'white');
+    color: #fefeff;
+
+    .el-container {
+        // height: calc(100vh - 300px);//100%-160
+    }
+
+    .el-input.is-disabled .el-input__inner {
+        // color: #d4d1d1;
+    }
+
+    .el-textarea.is-disabled .el-textarea__inner {
+        color: #d4d1d1;
+    }
+
+    .theme-bg {
+
+        width: 100%;
+        height: 100%;
+        // background-color: #e9f0fa;
+    }
+
+    .el-main {
+        padding: 0;
+    }
+
+    ul,
+    p {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .theme-header {
+        // background-color: white;
+    }
+
+    .theme-sidebar-box {
+        width: 100%;
+        height: 100%;
+        // background-color: white;
+
+        >.theme-sidebar {
+
+            color: map-get($defaultText, 'blue') !important;
+            height: 100%;
+            overflow: auto;
+        }
+    }
+
+
+    .theme-main {
+
+        position: relative;
+        height: 100%;
+        padding: 16px;
+        // background-color: rgb(30,42,69);
+
+        .theme-main-title {
+
+            // color: $light-blue;
+            // background-color: #e9f0fa;
+        }
+    }
+}
+
+.time-select-item:hover {
+    background-color: $light-blue;
+}
+
+.grey-theme {
+    filter: grayscale(100%);
+}
+
+.white-theme {}
+
+.content_warp {
+    width: 100%;
+    height: 100%;
+    // padding: 0 20px 0 20px;
+}

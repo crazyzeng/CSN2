@@ -1,0 +1,413 @@
+::v-deep {
+    .th-container-view {
+        overflow: unset;
+        padding-left: 20px;
+        background-color: transparent !important;
+    }
+
+    .el-form-item {
+        >.el-form-item__label {
+            color: #fff;
+        }
+    }
+
+    .el-radio__input.is-checked .el-radio__inner {
+        background-color: transparent;
+    }
+    .el-radio-group{
+        .el-radio__label{
+            color: #fff;
+        }
+    }
+    .el-radio__inner::after {
+        background-color: #5e89db;
+    }
+
+    .el-radio__inner {
+        background-color: transparent;
+        border: 1px solid #5e89db;
+    }
+
+    // .el-button--primary {
+        // background: #2a3e62;
+        // border-color: none;
+        // color: #5b75a6;
+        // margin-left: 0;
+        // font-size: 14px;
+        // padding-top: 5px;
+        // padding-bottom: 5px;
+    // }
+
+    .btn_g_m,
+    .form {
+        position: relative;
+        left: 200px;
+        top: -25px;
+
+        .el-button--primary {
+            border: 1px solid #2a3e62;
+            color: #fff;
+            margin-left: 30px;
+            font-size: 12px;
+        }
+    }
+}
+
+.top_block {
+    width: 4px;
+    height: 20px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 31px;
+    left: 20px;
+}
+
+.top_btn {
+    position: absolute;
+    top: 5px;
+    left: 160px;
+    background: transparent;
+    border-radius: 14px;
+    z-index: 999;
+}
+
+.top_btn_active {
+    background: linear-gradient(to right, #13b1ff, #146ef9);
+    color: #fff;
+}
+
+.electric,
+.water,
+.heat,
+.gas {
+    display: inline-block;
+    width: 300px;
+    height: 120px;
+}
+
+.act_elc {
+    background: linear-gradient(#00eccb, #00b9e1) !important;
+}
+
+.act_water {
+    background: linear-gradient(#22d0e7, #597ffb) !important;
+}
+
+.act_heat {
+    background: linear-gradient(#f898cf, #f9bfa4) !important;
+}
+
+.act_gas {
+    background: linear-gradient(#7e53ed, #bba7ee) !important;
+}
+
+.electric {
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-image: linear-gradient(#1d1f36, #1d1f36), linear-gradient(#00eccb, #00b9e1);
+    font-weight: 300;
+    padding: 1px;
+    border-radius: 15px;
+    background-clip: content-box, padding-box;
+    transition: filter 0.5s ease;
+}
+
+.electric:hover {
+    background: linear-gradient(#00eccb, #00b9e1);
+}
+
+.water {
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-image: linear-gradient(#1d1f36, #1d1f36), linear-gradient(#22d0e7, #597ffb);
+    font-weight: 300;
+    padding: 1px;
+    border-radius: 15px;
+    background-clip: content-box, padding-box;
+    transition: filter 0.5s ease;
+}
+
+.water:hover {
+    background: linear-gradient(#22d0e7, #597ffb);
+}
+
+.heat {
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-image: linear-gradient(#1d1f36, #1d1f36), linear-gradient(#f9bfa4, #f898cf);
+    font-weight: 300;
+    padding: 1px;
+    border-radius: 15px;
+    background-clip: content-box, padding-box;
+    transition: filter 0.5s ease;
+}
+
+.heat:hover {
+    background: linear-gradient(#f9bfa4, #f898cf);
+}
+
+.gas {
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-image: linear-gradient(#1d1f36, #1d1f36), linear-gradient(#bba7ee, #7e53ed);
+    font-weight: 300;
+    padding: 1px;
+    border-radius: 15px;
+    background-clip: content-box, padding-box;
+    transition: filter 0.5s ease;
+}
+
+.gas:hover {
+    background: linear-gradient(#bba7ee, #7e53ed);
+}
+
+.mid_block:not(:first-child) {
+    margin-left: 16px;
+}
+
+.block_top {
+    display: flex;
+    padding-top: 10px;
+}
+
+.block_top_left {
+    margin-left: 20px;
+}
+
+.block_top_right {
+    margin-left: 20px;
+    line-height: 19px;
+
+    p {
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    p:nth-child(2) {
+        font-size: 16px;
+    }
+}
+
+.block_mid {
+    padding: 15px 0 5px 20px;
+    font-size: 16px;
+
+    // display: flex;
+    img {
+        position: relative;
+        left: 5px;
+        top: 5px;
+    }
+}
+
+.block_bot {
+    padding: 0 0 0 20px;
+    font-size: 16px;
+
+    // display: flex;
+    img {
+        position: relative;
+        left: 5px;
+        top: 5px;
+    }
+
+    clear: both;
+}
+
+.block_mid span:nth-child(2),
+.block_bot span:nth-child(2) {
+    margin-left: 15px;
+}
+
+.block_mid span:nth-child(3),
+.block_bot span:nth-child(3),
+.block_mid span:nth-child(4),
+.block_bot span:nth-child(4) {
+    float: right;
+    position: relative;
+    right: 20px;
+}
+
+.chartContainer {
+    margin-top: 30px;
+    position: relative;
+
+    .lineTitle {
+        position: absolute;
+        top: 19px;
+        left: 25px;
+
+        p:first-child {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 2px;
+
+            span {
+                font-weight: 500;
+                font-size: 12px;
+            }
+        }
+
+        p:nth-child(2) {
+            font-size: 30px;
+            font-weight: bold;
+            color: #f35626;
+            background: coral;
+            background-image: -webkit-linear-gradient(90deg, #00bfe6, #e1f9fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    .el-main {
+        overflow: unset;
+    }
+
+    .lineChart {
+        height: 400px;
+        background: #1e2a45;
+        border-radius: 10px;
+    }
+
+    .barCharts {
+        margin-top: 20px;
+        height: 340px;
+        display: flex;
+        justify-content: space-around;
+
+        .cur,
+        .same,
+        .ring_wj {
+            min-width: 420px;
+            width: 100%;
+            height: 320px;
+            background: #1e2a45;
+            border-radius: 10px;
+            position: relative;
+            overflow: auto;
+        }
+
+        .same {
+            margin: 0 20px;
+        }
+
+        .barChart1,
+        .barChart2,
+        .barChart3 {
+            top: 25px;
+            left: 16px;
+            position: absolute;
+
+            p {
+                font-size: 18px;
+
+                span {
+                    font-size: 14px;
+                }
+
+                span:nth-child(2) {
+                    color: #1e2a45;
+                    font-weight: bold;
+                    display: inline-block;
+                    text-align: center;
+                    height: 18px;
+                    width: 42px;
+                    padding-top: 0px;
+                    margin-left: 15px;
+                    background-image: url(@/assets/icon/total_energy/legend1.png);
+                    background-size: 100% 100%;
+                }
+            }
+        }
+
+        .barChart2 {
+            p {
+                span:nth-child(2) {
+                    background-image: url(@/assets/icon/total_energy/legend2.png);
+                }
+            }
+        }
+
+        .barChart3 {
+            p {
+                span:nth-child(2) {
+                    background-image: url(@/assets/icon/total_energy/legend3.png);
+                }
+            }
+        }
+    }
+
+    .pieCharts {
+        height: 740px;
+        // height: 100%;
+        background-color: #1e2a45;
+        border-radius: 10px;
+        margin-left: 20px;
+
+        .pieChartsTitle {
+            position: relative;
+            top: 20px;
+            left: 16px;
+
+            span {
+                position: absolute;
+                left: 16px;
+                top: 0px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+
+        .cur {
+            margin-top: 20px;
+        }
+
+        .cur,
+        .same,
+        .ring_wj {
+            position: relative;
+
+            .pieChart1,
+            .pieChart2,
+            .pieChart3 {
+                position: absolute;
+                top: 20px;
+                left: 16px;
+                width: 42px;
+                height: 18px;
+                line-height: 18px;
+                span {
+                    display: inline-block;
+                    height: 18px;
+                    width: 42px;
+                    position: relative;
+                    left: 7px;
+                    top: 1px;
+                    color: #1E2A45;
+                    font-family: SourceHanSansCN-Bold;
+                    font-weight: bold;
+                }
+            }
+
+            .pieChart1 {
+                background-image: url(@/assets/icon/total_energy/legend1.png);
+                background-repeat: no-repeat;
+            }
+
+            .pieChart2 {
+                background-image: url(@/assets/icon/total_energy/legend2.png);
+                background-repeat: no-repeat;
+            }
+
+            .pieChart3 {
+                background-image: url(@/assets/icon/total_energy/legend3.png);
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}
