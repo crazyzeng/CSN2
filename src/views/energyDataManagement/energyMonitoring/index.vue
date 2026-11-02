@@ -62,7 +62,7 @@
                     <el-radio-group v-model="curDeviceType" size="small">
                         <el-radio-button v-for="(el, idx) in typeList" :key="el.value" :label="el.value">{{
                             el.label
-                        }}</el-radio-button>
+                            }}</el-radio-button>
                     </el-radio-group>
                 </div>
                 <div class="absolute top-3 right-8">
@@ -229,10 +229,11 @@ export default {
 
             this.connectStationWS(val)
 
+            // 比如：
             const modelMap = {
-                武广: '/CSN2/models/WG.glb',
-                沪昆: '/CSN2/models/HK.glb',
-                锅炉房: '/CSN2/models/GLF.glb',
+                '武广': import.meta.env.BASE_URL + 'models/WG.glb',
+                '沪昆': import.meta.env.BASE_URL + 'models/HK.glb',
+                '锅炉房': import.meta.env.BASE_URL + 'models/GLF.glb',
             };
 
             if (val == '锅炉房') {
@@ -286,7 +287,7 @@ export default {
             this.loadingProgress = 0;
 
             // 手动加载
-            const model = await this.three.loadModel('/CSN2/models/WG.glb', {}, (p) => {
+            const model = await this.three.loadModel(import.meta.env.BASE_URL + 'models/WG.glb', {}, (p) => {
                 this.loadingProgress = p;
             });
 

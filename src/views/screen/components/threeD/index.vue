@@ -69,7 +69,7 @@ export default {
             this.loading = true;
             this.loadingProgress = 0;
 
-            const model = await this.three.loadModel('/CSN2/models/CSN.glb', {}, (p) => {
+            const model = await this.three.loadModel(import.meta.env.BASE_URL + 'models/CSN.glb', {}, (p) => {
                 this.loadingProgress = p;
             });
 
@@ -113,7 +113,7 @@ export default {
 
             // 离开能源站 -> 回到主模型
             if (val.name !== '能源站') {
-                const model = await this.three.loadModel('/CSN2/models/CSN.glb');
+                const model = await this.three.loadModel(import.meta.env.BASE_URL + 'models/CSN.glb');
                 // 同步主模型到选择控制器，保证后续操作作用于当前模型
                 this.selector.setModel(model);
             }
@@ -171,7 +171,7 @@ export default {
          */
         async reset() {
             this.selector.resetAll();
-            const model = await this.three.loadModel('/CSN2/models/CSN.glb');
+            const model = await this.three.loadModel(import.meta.env.BASE_URL + 'models/CSN.glb');
             this.selector.setModel(model);
 
             this.activeName = '';
