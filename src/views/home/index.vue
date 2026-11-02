@@ -123,7 +123,7 @@
                                 @click="startEdit">编辑</el-button>
                             <el-button size="mini" type="primary" @click="saveData">{{
                                 totalData.enable ? '禁用' : '启用'
-                            }}</el-button>
+                                }}</el-button>
                         </div>
                     </div>
                     <section class="number_box items-center">
@@ -131,7 +131,7 @@
                             <div>
                                 <span class="number_text" v-if="!isEditing">{{
                                     displayData.currentYearElectricSum
-                                }}</span>
+                                    }}</span>
                                 <el-input ref="input1" v-else v-model="totalData.currentYearElectricSum" size="mini"
                                     class="number_text"></el-input>
                             </div>
@@ -143,7 +143,7 @@
                             <div>
                                 <span class="number_text" v-if="!isEditing">{{
                                     displayData.totalSaveElectricSum
-                                }}</span>
+                                    }}</span>
                                 <el-input v-else v-model="totalData.totalSaveElectricSum" size="mini"
                                     class="number_text"></el-input>
                             </div>
@@ -153,7 +153,7 @@
                             <div>
                                 <span class="number_text" v-if="!isEditing">{{
                                     displayData.totalSaveElectricRatio
-                                }}</span>
+                                    }}</span>
                                 <el-input v-else v-model="totalData.totalSaveElectricRatio" size="mini"
                                     class="number_text"></el-input>
                             </div>
@@ -165,7 +165,7 @@
                             <div>
                                 <span class="number_text" v-if="!isEditing">{{
                                     displayData.currentYearSaveElectricSum
-                                }}</span>
+                                    }}</span>
                                 <el-input v-else v-model="totalData.currentYearSaveElectricSum" size="mini"
                                     class="number_text"></el-input>
                             </div>
@@ -175,7 +175,7 @@
                             <div>
                                 <span class="number_text" v-if="!isEditing">{{
                                     displayData.currentYearSaveElectricRatio
-                                }}</span>
+                                    }}</span>
                                 <el-input v-else v-model="totalData.currentYearSaveElectricRatio" size="mini"
                                     class="number_text"></el-input>
                             </div>
@@ -529,9 +529,9 @@ export default {
                 if (res.code === 200 && res.data.length > 0) {
                     this.bottomData = res.data;
                     const total = res.data.reduce((sum, item) => {
-                            const value = Number(Object.values(item)[0]) || 0;
-                            return sum + value;
-                        }, 0);
+                        const value = Number(Object.values(item)[0]) || 0;
+                        return sum + value;
+                    }, 0);
                     this.bottomTotalNum = total ? total.toFixed(2) : 0;
                     // this.bottomTotalNum = total ? total : 0;
                 }
@@ -545,7 +545,20 @@ export default {
                 return tempArr;
             });
             if (tempPoints.length > 0) {
-                const url = `wss://${location.hostname + ':' + location.port}/websocket/cacheThemePointDataWebSocket/-1`;
+                // 1. 自动获取当前协议：https 对应 wss，http 对应 ws
+                const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+
+                // 2. 自动获取当前主机名和端口（本地是 localhost:5173，线上是 crazyzeng.github.io）
+                const host = window.location.host;
+
+                // 3. 拼接 URL（这里假设你的 WebSocket 服务和前端在同一个域名下）
+                // 如果线上后端在别的服务器，可以结合 import.meta.env.VITE_WS_URL 来配置
+                const url = `${protocol}//${host}/websocket/cacheThemePointDataWebSocket/-1`;
+
+                // 4. 【重要】如果你想在本地开发时连本地局域网的后端（比如 192.168.2.152），可以加上这段判断：
+                // const url = import.meta.env.DEV
+                //   ? 'ws://192.168.2.152:908/websocket/cacheThemePointDataWebSocket/-1'
+                //   : `${protocol}//${host}/websocket/cacheThemePointDataWebSocket/-1`;
                 // const url = 'ws://192.168.2.152:6103/cacheThemePointDataWebSocket/-1'
                 that.ws = new WebSocket(url);
                 that.ws.onopen = function () {
@@ -605,8 +618,8 @@ export default {
                 if (res.code === 200 && res.data.length > 0) {
                     this.topData = res.data;
                     const total = res.data.reduce((sum, item) => {
-                            return sum + (Number(item) || 0);
-                        }, 0)
+                        return sum + (Number(item) || 0);
+                    }, 0)
                     // this.topTotalNum = total ? total.toFixed(2) : '--';
                     this.topTotalNum = total ? total : '--';
                 }

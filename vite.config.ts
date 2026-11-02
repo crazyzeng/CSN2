@@ -19,8 +19,7 @@ export default defineConfig(({ mode }) => {
     return {
         // 生产环境使用相对路径，方便任意目录部署（与原 vue-cli 行为一致）
         // base: mode === 'production' ? './' : '/',
-        // github
-        base: '/CSN2/',
+        base: env.VITE_BASE_PATH || '/',
 
         plugins: [vue()],
 
