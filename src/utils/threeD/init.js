@@ -123,7 +123,7 @@ export function initThree(dom, modelUrl, options) {
     const pmremGenerator = new THREE.PMREMGenerator(renderer)
     pmremGenerator.compileEquirectangularShader()
 
-    new HDRLoader().load("/textures/studio_small_08_1k.hdr", (texture) => {
+    new HDRLoader().load(import.meta.env.BASE_URL + "textures/studio_small_08_1k.hdr", (texture) => {
         // 将加载到的 HDR 转换为场景环境贴图
         const envMap = pmremGenerator.fromEquirectangular(texture).texture
         scene.environment = envMap
@@ -138,7 +138,7 @@ export function initThree(dom, modelUrl, options) {
     /* ---------- Draco 压缩解码 ---------- */
     // Draco 解码器（适用于被 Draco 压缩过的 GLB/GLTF，减小体积）
     const dracoLoader = new DRACOLoader()
-    dracoLoader.setDecoderPath("/draco/")
+    dracoLoader.setDecoderPath(import.meta.env.BASE_URL + "draco/")
 
     loader = new GLTFLoader()
     loader.setDRACOLoader(dracoLoader)
